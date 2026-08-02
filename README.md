@@ -1,6 +1,6 @@
-# BudgetScala 💰
+# BudgetScala 
 
-Scalaで動く、個人向け家計簿Webアプリ。「15の言語で15個のアプリを作る」ポートフォリオプロジェクトの13本目（Scala編）。
+Scalaで動く、個人向け家計簿Webアプリ。
 
 ![CI](https://github.com/saki-nya1539/budgetscala/actions/workflows/ci.yml/badge.svg)
 
