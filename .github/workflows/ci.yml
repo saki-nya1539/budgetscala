@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Scala (via Coursier)
+        uses: coursier/setup-action@v1
+        with:
+          apps: scala scalac
+
+      - name: Compile
+        run: |
+          mkdir -p build
+          scalac -d build $(find src test -name "*.scala")
+
+      - name: Run tests
+        run: scala -cp build -M budgetscala.test.TestRunner
